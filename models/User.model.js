@@ -18,6 +18,34 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Name is required."],
     },
+    imageURL: {
+      type: String,
+      default : ""
+    },
+    decks: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'Deck',
+			},
+		],
+    events: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'Event',
+			},
+		],
+    followers: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'User',
+			},
+		],
+    following: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'User',
+			},
+		],
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
