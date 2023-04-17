@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const Deck = require("../models/Deck.model");
 const User = require("../models/User.model");
-const { isAuthenticated } = require("./../middleware/jwt.middleware.js");
+const { isAuthenticated } = require("../middleware/jwt.middleware.js");
 
 router.post("/decks", isAuthenticated, (req, res, next) => {
   const { name, description } = req.body;
