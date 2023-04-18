@@ -17,7 +17,7 @@ const eventSchema = new Schema(
     creator: {
 			type: Schema.Types.ObjectId,
 			ref: 'User',
-			required: true,
+			// required: true,
 		},
     participants: {
 			type: Schema.Types.ObjectId,
@@ -33,7 +33,6 @@ const eventSchema = new Schema(
     },
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`
     timestamps: true,
   }
 );
