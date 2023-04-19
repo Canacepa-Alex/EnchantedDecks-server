@@ -27,10 +27,12 @@ const eventSchema = new Schema(
       type: Schema.Types.ObjectId,
 			ref: 'User',
     },
-    deck: {
-      type: [{String, Number}],
-      default: null
-    },
+    deck: [
+      {
+        cardKey: String,
+        numberOfCard: Number,
+      },
+    ],
   },
   {
     timestamps: true,
