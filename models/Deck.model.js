@@ -11,18 +11,20 @@ const deckSchema = new Schema(
       required: false,
     },
     user: {
-			type: Schema.Types.ObjectId,
-			ref: 'User',
-			// required: true,
-		},
-    cards: {
-				type: [{String, Number}],
-        default: null
-			},
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      // required: true,
+    },
+    cards: [
+      {
+        cardKey: String,
+        numberOfCard: Number,
+      },
+    ],
     followers: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'User',
+        ref: "User",
       },
     ],
   },
