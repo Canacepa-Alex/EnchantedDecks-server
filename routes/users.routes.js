@@ -7,6 +7,7 @@ const { isAuthenticated } = require("./../middleware/jwt.middleware.js");
 
 router.get("/users", (req, res, next) => {
   User.find()
+    .populate("decks")
     .populate("events")
     .populate("followers")
     .then((allUsers) => res.json(allUsers))
@@ -22,6 +23,7 @@ router.get("/users/:userId", (req, res, next) => {
   }
 
   User.findById(userId)
+    .populate("decks")
     .populate("events")
     .populate("followers")
     .then((user) => {
@@ -60,7 +62,7 @@ router.put("/users/:userId", isAuthenticated, (req, res, next) => {
     .then((updatedUser) => {
       return res.json(updatedUser);
     })
-    .catch(err => res.json(err));
+    .catch((err) => res.json(err));
 });
 
 router.delete("/users/:userId", isAuthenticated, (req, res, next) => {
