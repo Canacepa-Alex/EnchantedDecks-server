@@ -139,6 +139,28 @@ router.put("/decks/:deckId/addCard", isAuthenticated, (req, res, next) => {
     .catch((err) => res.json(err));
 });
 
+router.put("/decks/:deckId/addTofavorite", isAuthenticated, (req, res, next) => {
+    const { deckId } = req.params;
+    const currentUserId = req.payload._id;
+
+    Deck.findByIdAndUpdate(deckId, { $push: { followers: currentUserId } }, { new: true })
+      .then((responseDeck) => {
+        //return res.json(responseDeck);
+      })
+      .then(() =>{
+        User.findByIdAndUpdate(
+          currentUserId,
+          { $push: { following: currentUserId } },
+          { new: true }
+        )
+        .then((responseUser) =>{
+          return res.json(responseUser);
+        })
+        .catch((err) => res.json(err));
+      })
+      .catch((err) => res.json(err));
+});
+
 router.put("/decks/:deckId/removeCard", isAuthenticated, (req, res, next) => {
   const { deckId } = req.params;
   const currentUserId = req.payload._id;
