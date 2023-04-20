@@ -18,6 +18,10 @@ const userSchema = new Schema(
       unique: true,
       required: [true, "Name is required."],
     },
+    description: {
+      type: String,
+      default : ""
+    },
     imageURL: {
       type: String,
       default : ""
