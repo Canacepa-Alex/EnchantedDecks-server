@@ -6,12 +6,12 @@ const eventSchema = new Schema(
       type: String,
       required: [true, "Name is required."],
     },
-    localisation: {
+    position: {
       type: String,
     },
     date:{
       type: Date,
-      required: [true, "Location is required."],
+      // required: [true, "Date is required."],
     },
     type: {},
     creator: {
