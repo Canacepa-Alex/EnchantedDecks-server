@@ -7,10 +7,10 @@ const User = require("../models/User.model");
 const { isAuthenticated } = require("../middleware/jwt.middleware");
 
 router.post("/events", isAuthenticated, (req, res, next) => {
-    const { name, description, localisation, type} = req.body;
+    const { name, description, position, type} = req.body;
     const userId = req.payload._id;
 
-    Event.create({ name, description, localisation, type, user: userId })
+    Event.create({ name, description, position, type, creator: userId })
       .then(event => res.json(event))
       .then((event) => {
         User.findByIdAndUpdate(
