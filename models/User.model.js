@@ -20,36 +20,36 @@ const userSchema = new Schema(
     },
     description: {
       type: String,
-      default : ""
+      default: "",
     },
     imageURL: {
       type: String,
-      default : ""
+      default: "https://res.cloudinary.com/dsbfbwbvq/image/upload/v1680051413/Chapter-Verse/Avatar_01_scbhma.jpg",
     },
     decks: [
-			{
-				type: Schema.Types.ObjectId,
-				ref: 'Deck',
-			},
-		],
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Deck",
+      },
+    ],
     events: [
-			{
-				type: Schema.Types.ObjectId,
-				ref: 'Event',
-			},
-		],
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Event",
+      },
+    ],
     followers: [
-			{
-				type: Schema.Types.ObjectId,
-				ref: 'User',
-			},
-		],
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
     following: [
-			{
-				type: Schema.Types.ObjectId,
-				ref: 'User',
-			},
-		],
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
